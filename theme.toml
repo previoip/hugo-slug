@@ -1,0 +1,14 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+
+name = "Slug"
+license = "MIT"
+licenselink = "https://github.com/previoip/hugo-slug/blob/main/LICENSE"
+description = ""
+homepage = "https://github.com/previoip/hugo-slug"
+features = []
+min_version = "0.3.0"
+
+[author]
+  name = "Previo Prakasa"
+  homepage = "https://github.com/previoip"

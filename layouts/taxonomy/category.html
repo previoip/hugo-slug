@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article>
+  {{- partial "crumb.html" . }}
+  <h1>Posts by Category: {{ .Data.Term }}</h1>
+  <ul>
+    {{ range .Data.Pages }}
+    <li>
+      <h4 style="margin: 0;">
+        {{ .Page.Date.Format "02 Jan 06" }}
+        <a href="{{.RelPermalink}}">{{ .Title }}</a>
+      </h4>
+    </li>
+    {{ end }}
+  </ul> 
+</article>
+{{ end }}

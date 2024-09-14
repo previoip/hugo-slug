@@ -1,0 +1,8 @@
+<h{{ .Level }} id="{{ .Anchor }}">
+{{ if le .Level 2 }}
+{{ end }}  
+{{- .Text | safeHTML -}}
+{{ if ge .Level 2 }}
+{{ end }}  
+
+</h{{ .Level }}>

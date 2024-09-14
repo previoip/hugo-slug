@@ -3,15 +3,135 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{{ partial "heads/fonts.html" . }}
-<link rel="stylesheet" type="text/css" href="/css/styles.css?v=0.1.3">
-<link rel="stylesheet" href="/css/highlight.css?v=1.0.1">
+<link rel="stylesheet" href="/css/highlight.css?v=1.0.0">
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
-<script src="/js/main.js?v=0.1.1" defer></script>
 {{ if .Params.katex }}{{ partial "heads/katex.html" . }}{{ end }}
 {{ if .Params.mermaidjs }}{{ partial "heads/mermaid.html" . }}{{ end }}
 {{ if .Params.mathjax }}{{ partial "heads/mathjax.html" . }}{{ end }}
 
+
+{{ if eq .Site.Params.debug 1 }}
+<style>
+*, * * {outline: 1px dashed greenyellow;}
+</style>
+{{ end }}
+
+<style>
+
+:root {
+  --f: 1.2em;
+  --w: 30;
+}
+
+html {
+  margin: 0;
+  height: 100%;
+  max-width: calc(var(--f)*var(--w));
+  font-size: var(--f);
+}
+
+body {
+  font-family: monospace;
+  padding: 0 var(--f);
+  scrollbar-face-color: ThreeDFace !important;
+  scrollbar-shadow-color: ThreeDDarkShadow !important;
+  scrollbar-highlight-color: ThreeDHighlight !important;
+  scrollbar-3dlight-color: ThreeDLightShadow !important;
+  scrollbar-darkshadow-color: ThreeDDarkShadow !important;
+  scrollbar-track-color: Scrollbar !important;
+  scrollbar-arrow-color: ButtonText !important;
+}
+
+* {
+  font-size: inherit;
+}
+p {
+  line-height: calc(var(--f)*1.2);
+  text-align: justify;
+}
+
+a {
+  color: #4079d5;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #1c6be9;
+  text-decoration: none;
+}
+
+a:active {
+  color: #2555a1;
+  text-decoration: none;
+  background-color: var(--tx-c-hover);
+}
+
+/* mermaid resets */
+
+div.mermaid .edgeLabel {
+  padding: .2rem;
+}
+
+img, div.mermaid svg {
+  margin: auto;
+  display: block;
+  max-width: min(calc(100vw - var(--f) * 2), calc(var(--f)*var(--w)));
+  min-width: 200px;
+}
+
+
+/* codeblock and mathjax resets */
+
+
+code:not([class]) {
+  background-color: #4d4f500f;
+  padding: .1em .4rem;
+  border-radius: .2rem;
+}
+
+
+div.highlight pre  {
+  padding: 1rem;
+  border-radius: .6rem;
+  overflow: scroll;
+  overflow-y: auto  ;
+  overflow-x: auto  ;
+}
+
+div.highlight pre code span {
+  margin-block-end: .1em;
+}
+
+.MathJax, div.highlight pre {
+  max-width: calc(var(--f)*var(--w));
+}
+
+/* misc */
+
+.disabled, .failed {
+  pointer-events: none;
+}
+
+
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track
+{
+  background: var(--tx-c-tp-primary-quarter);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: var(--tx-c-primary-half);
+  border-radius: 3px;
+}
+
+</style>

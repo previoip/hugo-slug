@@ -1,3 +1,5 @@
 {{ $taxonomy := "categories" }} {{ with .Param $taxonomy }}
-  <pre style="margin: 0">categories:{{ range $index, $tag := . }} {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy $tag) -}}<a href="{{ .Permalink }}">{{ $tag | urlize }}</a>{{- end -}}{{- end -}}</pre>
+<p>
+  categories:{{ range $index, $tag := . }} {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy $tag) -}}<a href="{{ .Permalink }}">{{ $tag | urlize }}</a>{{- end -}}{{- end -}}
+</p>
 {{ end }}

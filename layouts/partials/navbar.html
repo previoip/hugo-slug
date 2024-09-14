@@ -1,10 +1,4 @@
-<div id="navbar">
-  {{ $currentPage := . }}
-  <ul class="nav-col">
-    {{ range .Site.Menus.main }}
-      <li class="nav-item"><a class="nav-link" href="{{ .URL }}">{{ .Name }}</a></li>
-    {{ end }}
-  </ul>
-
-  <!-- <button id="theme-butt"></button> -->
-</div>
+{{ $currentPage := . }}
+<nav>
+{{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>&nbsp;{{ end }}
+</nav>

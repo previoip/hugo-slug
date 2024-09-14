@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {{ partial "head.html" . }}
-    <title>{{ block "title" . }} {{ .Site.Title }} {{ end }}</title>
-  </head>
+<head>
+  {{ partial "head.html" . }}
+  <title>{{ block "title" . }} {{ .Site.Title }} {{ end }}</title>
+</head>
 
-  <body>
-    {{ partial "navbar.html" . }}
-    <div class="wrapper">
-      {{ block "main" . }} {{ end }}
-    </div>
-    {{ partial "footer.html" . }}
-  </body>
+<body>
+  {{- partial "header.html" . -}}
+
+  {{ if not 
+    (or 
+    (eq .Section "")
+    (eq .Section "about")
+    (eq .Section "resources")
+    (eq .Section "categories")
+    (eq .Section "tags")
+    )
+  }}
+  {{ if not .PublishDate.IsZero }}
+  <span>published-date: {{ .PublishDate.Format "02 Jan 2006 15:04 -0700" }}</span>
+  {{ end }}
+  {{ if not .ExpiryDate.IsZero }}
+  <span>expiry-date: {{ .ExpiryDate.Format "02 Jan 2006 15:04 -0700" }}</span>
+  {{ end }}
+  {{ end }}  
+
+  {{ if isset .Params "categories"}} {{- partial "categories.html" . -}} {{ end }}
+  {{ if isset .Params "tags" }} {{- partial "tags.html" . -}} {{ end }}
+
+  {{ block "main" . }} {{ end }}
+  {{ partial "footer.html" . }}
+</body>
+
 </html>
 
 

@@ -1,39 +1,17 @@
-
 {{ define "title" }}
 {{ .Title }} &ndash; {{ .Site.Title }}
 {{ end }}
 
 {{ define "main" }}
+{{ if not .Params.Menu }} <hr> {{ end }}
 
-<article>
-  <header>
-    {{- partial "crumb.html" . }}
-    <h1 class="header-title">{{.Title}}</h1>
-    {{ if not .PublishDate.IsZero }}<pre style="margin: 0;">published-date: {{ .PublishDate.Format "02 Jan 2006 15:04 -0700" }}</pre>{{ end }}
-    {{ if not .ExpiryDate.IsZero }}<pre style="margin: 0;">expiry-date: {{ .ExpiryDate.Format "02 Jan 2006 15:04 -0700" }}</pre>{{ end }}
-    {{ if isset .Params "categories"}} {{ partial "categories.html" . }} {{ end }}
-    {{ if isset .Params "tags" }} {{ partial "tags.html" . }} {{ end }}
-  </header>
-  
-  {{ if not .Params.Menu }} <hr> {{ end }}
+{{ .Content }}
 
-  {{ .Content }}
-</article>
-
-<div class="posts">
-    {{ range .Pages }}
-    <div {{ if not (or (eq .Data.Singular "category") (eq .Data.Singular "tag")) }} style="margin-top: 3rem" {{ else }} style="margin: 0" {{ end }}>
-      <h3 style="margin: 0; padding: 0;">&raquo; <a href="{{.Permalink}}" style="text-overflow: ellipsis;">{{.Title}}</a></h3>
-
-      {{ if not (or (eq .Data.Singular "category") (eq .Data.Singular "tag")) }}
-      <p><pre>{{.Date.Format "02 January 2006"}}</pre></p>
-      <p class="summary" style="margin: 0; padding: 0;">{{ .Summary }} {{ if .Truncated }} ... {{ end }}</p>
-      {{ end }}
-      <br>
-    </div>
-    {{ end }}
-</div>
-
-</ul>
-
+{{ range .Pages }}
+<p>
+  &nbsp;*
+  {{ if not (or (eq .Data.Singular "category") (eq .Data.Singular "tag")) }}
+  {{.Date.Format "02 Jan 2006"}} - 
+  {{ end }}<a href={{.Permalink}}>{{.Title}}</a>
+</p>{{ end }}
 {{ end }}

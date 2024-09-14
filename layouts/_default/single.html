@@ -1,22 +1,9 @@
-
 {{ define "title" }}
 {{ .Title }} &ndash; {{ .Site.Title }}
 {{ end }}
 
 {{ define "main" }}
-<article>
-  <header class="single">
-    {{- partial "crumb.html" . }}
-    <h1 class="header-title">{{ .Title }}</h1>
-    {{ if not .PublishDate.IsZero }}<pre style="margin: 0;">published-date: {{ .PublishDate.Format "02 Jan 2006 15:04 -0700" }}</pre>{{ end }}
-    {{ if not .ExpiryDate.IsZero }}<pre style="margin: 0;">expiry-date: {{ .ExpiryDate.Format "02 Jan 2006 15:04 -0700" }}</pre>{{ end }}
 
-    {{ partial "categories.html" . }}
-    {{ partial "tags.html" . }}
-  </header>
-  
-  <hr>
+{{ .Content }}
 
-  {{ .Content }}
-</article>
 {{ end }}

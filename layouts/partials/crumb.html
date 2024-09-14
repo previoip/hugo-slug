@@ -1,10 +1,5 @@
 <!-- https://dongheenam.info/posts/breadcrumb-navigation-in-hugo/ -->
-<nav class="crumb">
-  <ol style="padding-left: 0;">
-    {{ template "breadcrumb" (dict "p1" . "p2" .) }}
-  </ol>
-</nav>
-
+<p>{{ template "breadcrumb" (dict "p1" . "p2" .) }}</p>
 
 {{ define "breadcrumb" }}
   {{ if .p1.Parent }}
@@ -12,11 +7,10 @@
   {{ else if not .p1.IsHome }}
     {{ template "breadcrumb" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
   {{ end }}
-  <li class="crumb {{ if eq .p1 .p2 }}active{{ end }}">
-    {{ if eq .p1 .p2 }}
+
+  {{ if eq .p1 .p2 }}
     {{ .p1.Title }}
     {{ else }}
-    <a href="{{ .p1.RelPermalink }}">{{ .p1.Title }}</a>
+    <a href="{{ .p1.RelPermalink }}">{{ .p1.Title }}</a> &gt;
     {{ end }}
-  </li>
 {{ end }}

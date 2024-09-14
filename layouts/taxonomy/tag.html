@@ -1,12 +1,10 @@
 {{ define "main" }}
-<article>
-  <h1>Posts by Tag: {{ .Data.Term }}</h1>
-  {{ range .Data.Pages }}
-  <p>
-  &nbsp;*
-  {{ .Page.Date.Format "02 Jan 06" }}
-    <a href="{{.RelPermalink}}">{{ .Title }}</a>
-  </p>
-  {{ end }}
-</article>
+<h1>Posts by Tag: {{ .Data.Term }}</h1>
+{{ range .Data.Pages }}
+<p>
+&nbsp;*
+{{ .Page.Date.Format "02 Jan 06" }}
+  <a href="{{.RelPermalink}}">{{ .Title }}</a>
+</p>
+{{ end }}
 {{ end }}

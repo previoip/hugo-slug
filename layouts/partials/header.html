@@ -1,4 +1,7 @@
-<h1>{{- .Site.Title -}}</h1>
-{{ with .Params.subtitle }}{{.}}{{ end }}
-{{- partial "navbar.html" . -}}
-{{- partial "crumb.html" . -}}
+<div style="background-color: #d5d5d569;">
+  <br>
+  <h1 class="tc">{{- .Site.Title -}}</h1>
+  {{ with .Params.subtitle }}{{.}}{{ end }}
+  {{- partial "navbar.html" . -}}
+  <hr>
+</div>

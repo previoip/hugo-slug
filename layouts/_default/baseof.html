@@ -6,28 +6,35 @@
 </head>
 
 <body>
-  {{- partial "header.html" . -}}
-
-  {{ if not 
-    (or 
-    (eq .Section "")
-    (eq .Section "about")
-    (eq .Section "resources")
-    (eq .Section "categories")
-    (eq .Section "tags")
-    )
-  }}
-  {{ if not .PublishDate.IsZero }}
-  <span>published-date: {{ .PublishDate.Format "02 Jan 2006 15:04 -0700" }}</span>
-  {{ end }}
-  {{ if not .ExpiryDate.IsZero }}
-  <span>expiry-date: {{ .ExpiryDate.Format "02 Jan 2006 15:04 -0700" }}</span>
-  {{ end }}
-  {{ end }}  
-
-  {{ if isset .Params "categories"}} {{- partial "categories.html" . -}} {{ end }}
-  {{ if isset .Params "tags" }} {{- partial "tags.html" . -}} {{ end }}
-
+    {{- partial "header.html" . -}}
+    <p style="padding: 0;">
+      {{- partial "crumb.html" . -}}
+      {{ if not (eq .Section "") }}
+      <br>
+      {{end}}
+      {{ if not
+        (or 
+        (eq .Section "")
+        (eq .Section "about")
+        (eq .Section "resources")
+        (eq .Section "categories")
+        (eq .Section "tags")
+        ($.Params.excldate)
+        )
+      }}
+      {{ if not .PublishDate.IsZero }}
+      <span>published-date: {{ .PublishDate.Format "02 Jan 2006 15:04 -0700" }}</span><br>
+      {{ end }}
+      {{ if not .ExpiryDate.IsZero }}
+      <span>expiry-date: {{ .ExpiryDate.Format "02 Jan 2006 15:04 -0700" }}</span><br>
+      {{ end }}
+      {{ end }}
+      {{ if isset .Params "categories"}}{{- partial "categories.html" . -}}<br>{{ end }}
+      {{ if isset .Params "tags" }}{{- partial "tags.html" . -}}<br>{{ end }}    
+    </p>
+  <h1 class="tc">{{ .Title }}</h1>
+  
+  <hr>
   {{ block "main" . }} {{ end }}
   {{ partial "footer.html" . }}
 </body>

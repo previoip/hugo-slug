@@ -1,4 +1,4 @@
 {{ $currentPage := . }}
-<nav>
-{{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>&nbsp;{{ end }}
+<nav class="tc">
+{{ range .Site.Menus.main }}[<a href="{{ .URL }}">{{ .Name }}</a>]&nbsp;{{ end }}
 </nav>

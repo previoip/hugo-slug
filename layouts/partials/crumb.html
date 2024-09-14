@@ -1,16 +1,20 @@
 <!-- https://dongheenam.info/posts/breadcrumb-navigation-in-hugo/ -->
-<p>{{ template "breadcrumb" (dict "p1" . "p2" .) }}</p>
+{{ if not (eq .Section "") }}
+
+<span>dir: <i>{{ template "breadcrumb" (dict "p1" . "p2" .) }}</i></span>
+{{ end }}
 
 {{ define "breadcrumb" }}
-  {{ if .p1.Parent }}
-    {{ template "breadcrumb" (dict "p1" .p1.Parent "p2" .p2 )  }}
-  {{ else if not .p1.IsHome }}
-    {{ template "breadcrumb" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
-  {{ end }}
+{{ if .p1.Parent }}
+{{ template "breadcrumb" (dict "p1" .p1.Parent "p2" .p2 )  }}
+{{ else if not .p1.IsHome }}
+{{ template "breadcrumb" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+{{ end }}
 
-  {{ if eq .p1 .p2 }}
-    {{ .p1.Title }}
-    {{ else }}
-    <a href="{{ .p1.RelPermalink }}">{{ .p1.Title }}</a> &gt;
-    {{ end }}
+{{ $tx := ( truncate 48 .p1.Title ) }}
+{{ if eq .p1 .p2 }}
+<span>{{ $tx }}</span>
+{{ else }}
+<a href="{{ .p1.RelPermalink }}">{{ $tx }}</a> &sol;
+{{ end }}
 {{ end }}

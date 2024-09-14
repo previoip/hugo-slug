@@ -1,8 +1,6 @@
-<h{{ .Level }} id="{{ .Anchor }}">
-{{ if le .Level 2 }}
-{{ end }}  
+
+<h{{ .Level }} id="{{ .Anchor }}" {{ if le .Level 2 }}class="tc"{{ end }}>
 {{- .Text | safeHTML -}}
 {{ if ge .Level 2 }}
-{{ end }}  
-
+{{ end }}
 </h{{ .Level }}>

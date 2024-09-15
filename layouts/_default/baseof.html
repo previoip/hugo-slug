@@ -33,9 +33,10 @@
       {{ if isset .Params "tags" }}{{- partial "tags.html" . -}}<br>{{ end }}    
     </p>
   <h1 class="tc">{{ .Title }}</h1>
-  
   <hr>
-  {{ block "main" . }} {{ end }}
+  <div>
+    {{ block "main" . }} {{ end }}
+  </div>
   {{ partial "footer.html" . }}
 </body>
 

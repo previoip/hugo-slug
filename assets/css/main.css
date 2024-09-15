@@ -1,12 +1,11 @@
 
 :root {
-  --f: 1.2em;
+  --f: 1em;
   --w: 30;
 }
 
 html {
   margin: 0 2em 0 2em;
-  padding: 0 var(--f);
   max-width: calc(var(--f)*var(--w));
   font-size: var(--f);
 }
@@ -24,30 +23,34 @@ body {
   scrollbar-arrow-color: ButtonText !important;
 }
 
-
 * {
   font-size: inherit;
 }
 
 p {
-  line-height: calc(var(--f)*1.2);
+  /* line-height: calc(var(--f)*1.2); */
   padding-left: calc(var(--f)*1.6);
 }
 
 a {
-  color: #4079d5;
+  color: #2d6ed7;
   text-decoration: underline;
 }
 
 a:hover {
-  color: #1c6be9;
+  color: #104db0;
   text-decoration: none;
 }
 
 a:active {
-  color: #2555a1;
+  color: #2d6ed7;
   text-decoration: none;
   background-color: var(--tx-c-hover);
+}
+
+blockquote {
+  opacity: .75;
+  background-color: #e9e61c68;
 }
 
 /* mermaid resets */
@@ -59,8 +62,8 @@ div.mermaid .edgeLabel {
 img, div.mermaid svg {
   margin: auto;
   display: block;
-  max-width: min(calc(100vw - var(--f) * 2), calc(var(--f)*var(--w)));
-  min-width: 200px;
+  max-width: min(100%, calc(var(--f)*var(--w)));
+  min-width: 100px;
 }
 
 

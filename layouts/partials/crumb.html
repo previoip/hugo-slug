@@ -11,7 +11,7 @@
 {{ template "breadcrumb" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
 {{ end }}
 
-{{ $tx := ( truncate 48 .p1.Title ) }}
+{{ $tx := ( truncate 36 .p1.Title ) }}
 {{ if eq .p1 .p2 }}
 <span>{{ $tx }}</span>
 {{ else }}

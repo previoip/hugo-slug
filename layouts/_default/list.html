@@ -7,10 +7,7 @@
 {{ .Content }}
 
 {{ range .Pages }}
-<p>
-  &nbsp;*
-  {{ if not (or (eq .Data.Singular "category") (eq .Data.Singular "tag")) }}
-  {{.Date.Format "02 Jan 2006"}} - 
-  {{ end }}<a href={{.Permalink}}>{{.Title}}</a>
-</p>{{ end }}
+<p>* {{ if not (or (eq .Data.Singular "category") (eq .Data.Singular "tag")) }}{{.Date.Format "02 Jan 2006"}} - {{ end }}<a href={{.Permalink}}>{{.Title}}</a></p>
+{{ end }}
+
 {{ end }}

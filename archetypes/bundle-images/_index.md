@@ -8,6 +8,7 @@ tags: ['']
 # extern libs include flags 
 katex: false
 mermaidjs: false
+disqus: true
 
 # optional frontmatter params
 # expirydate: 

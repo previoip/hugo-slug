@@ -1,5 +1,6 @@
 
 <h{{ .Level }} id="{{ .Anchor }}" {{ if le .Level 2 }}class="tc"{{ end }}>
+{{ if le .Level 2 }}<br>{{ end }}
 {{- .Text | safeHTML -}}
 {{ if ge .Level 2 }}
 {{ end }}

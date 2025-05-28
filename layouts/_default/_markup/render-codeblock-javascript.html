@@ -1,0 +1,5 @@
+{{ $result := transform.HighlightCodeBlock . }}
+{{ $result.Wrapped }}
+{{ if .Attributes.inject }}
+<script defer>{{ .Inner | safeJS }}</script>
+{{ end }}
